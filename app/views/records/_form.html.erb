@@ -1,0 +1,31 @@
+<%= form_with(model: record, local: true) do |form| %>
+  <div class ="box has-border-colored  ">
+          <%= form.label :name, class: "label has-text-lavanda is-size-5" %>
+         <div class = "control ">
+         <%= form.text_field :name, class: "input  has-text-centered has-border-colored", placeholder: "Name your record, please" %>
+         
+         <p class="help has-text-lavanda is-size-6">Choose a group</p>
+         <%# <%= collection_select(:record, :group_id, Group.all, :id, prompt: true) %> %>
+           <%= form.label :amount, class: "label has-text-lavanda is-size-5" %>
+         <div class = "control ">
+         <%= form.number_field :amount, in: 0..60,step: 1, class: "input  has-text-centered has-border-colored", placeholder: "time" %>
+          <span>
+            <%= radio_button_tag(:time, "minutes", checked: true) %>
+            <%= label_tag(:minutes, "minutes") %>
+          </span>
+
+          <span>
+            <%= radio_button_tag(:time, "hours") %>
+            <%= label_tag(:hours, "hours") %>
+          </span>
+         
+         <p class="help has-text-lavanda is-size-6">How many time did you use your cellphone?</p>
+         
+         </div>
+         <br/>
+        </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
