@@ -5,6 +5,7 @@ class RecordsController < ApplicationController
   # GET /records.json
   def index
     @groups = Group.all
+    @record_group = RecordGroup.new
     @amount = Record.pluck(:amount).sum
     @record = current_user.records.build
     @records = Record.all
