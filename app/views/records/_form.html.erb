@@ -1,0 +1,90 @@
+<%= form_with(model: record, local: true) do |form| %>
+  <% if record.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(record.errors.count, "error") %> prohibited this record from being saved:</h2>
+
+        <ul>
+          <% record.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <div class = "columns is-centered">
+    
+    <div class = "column is-half ">
+  
+      <div class ="box has-border-colored  ">
+      
+        <div class = "field">
+          <%= form.label :name, class: "label has-text-lavanda is-size-5" %>
+          <div class = "control ">
+          <%= form.text_field :name, class: "input  has-text-centered has-border-colored", placeholder: "Name your record, please" %>
+        </div>
+            
+            
+
+            <%# <%= collection_select(:record, :group_id, Group.all, :id, prompt: true) %> 
+        <div class = "field">
+          <%= form.label 'How many time did you use your cellphone?', class: "label has-text-lavanda is-size-5" %>
+          <div class = "control ">
+          <%= form.number_field :amount, in: 0..60,step: 1, class: "input  has-text-centered has-border-colored", placeholder: "time" %>
+          <span>
+            <%= radio_button_tag(:time, "minutes", checked: true) %>
+            <%= label_tag(:minutes, "minutes") %>
+          </span>
+
+          <span>
+            <%= radio_button_tag(:time, "hours") %>
+            <%= label_tag(:hours, "hours") %>
+          </span>
+        </div>
+
+        <br>
+
+        <p class="label is-size-5">Choose a group</p>
+
+
+        <div class="field">
+          <label class="label">Subject</label>
+          <div class="control">
+              <% if @groups %>
+                <% @groups.each do |group| %>
+                  <span> <%= check_box_tag "record[group_id][]", group.id %> <span><%= group.name %></span></span>
+                <% end %>
+                <% else %>
+                  <h2>You don't have any group yet <%= link_to 'create a new one', new_group_path %></h2>
+                
+              <% end %>
+              
+                
+              
+            
+          </div>
+
+
+        <br>
+
+        <div class="field is-grouped">
+          <div class="control">
+            <%= form.submit 'submit', class: 'button' %>
+          </div>
+        </div>
+
+      </div>
+        
+    </div>
+      
+  </div>
+    
+<% end %>
+
+  </div>
+</div> 
+
+
+
+
+
+
+

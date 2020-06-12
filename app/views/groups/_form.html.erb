@@ -1,0 +1,33 @@
+<%= form_with(model: group, local: true) do |form| %>
+  <% if group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+      <ul>
+        <% group.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <div class ="box has-border-colored  ">
+          <%= form.label :name, class: "label has-text-lavanda is-size-5" %>
+         <div class = "control ">
+         <%= form.text_field :name, class: "input  has-text-centered has-border-colored", placeholder: "Social media" %>
+         
+         <p class="help has-text-lavanda is-size-6">Choose a group</p>
+           <%= form.label :icon, class: "label has-text-lavanda is-size-5" %>
+         <div class = "control ">
+         <%= form.text_field :icon, class: "input  has-text-centered has-border-colored", placeholder: "icon" %>
+
+         
+         <p class="help has-text-lavanda is-size-6">How many time did you use your cellphone?</p>
+         
+         </div>
+         <br/>
+        </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
