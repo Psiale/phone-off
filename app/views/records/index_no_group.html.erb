@@ -10,7 +10,7 @@
   </thead>
 
   <tbody>
-    <% @records_with_group.each do |record| %>
+    <% @records_without_group.each do |record| %>
       <tr>
         <td><p>record name | </p><%= record.name %></td>
         <td><p>time spent </p><%= record.amount %> minutes</td>

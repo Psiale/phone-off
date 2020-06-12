@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:show, :new, :create, :update]
   resources :records
+  get 'index_no_group', :to => 'records#index_no_group', :as => :index_no_group
   resources :groups
   resources :record_groups, except: [:edit, :update]
   root 'users#show'

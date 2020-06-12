@@ -5,10 +5,18 @@ class RecordsController < ApplicationController
   # GET /records.json
   def index
     @groups = Group.all
-    @record_group = RecordGroup.new
-    @amount = Record.pluck(:amount).sum
+    @records_with_group = current_user.records.includes(:record_groups).where.not(record_groups: { record_id: nil})
+    
+    @amount = Record.pluck(:amount).sum if Record.exists?
     @record = current_user.records.build
     @records = Record.all
+  end
+
+  def index_no_group
+    @records_without_group = current_user.records.includes(:record_groups).where(record_groups: { record_id: nil})
+    @record = current_user.records.build
+    @amount = Record.pluck(:amount).sum if Record.exists?
+    @groups = Group.all
   end
 
   # GET /records/1
@@ -29,6 +37,9 @@ class RecordsController < ApplicationController
   # POST /records.json
   def create
     @record = current_user.records.build(record_params)
+    
+    # @record_without_group = current_user.records.includes(:record_groups).where(record_groups { record_id: nil})
+    @record.groups = Group.find(params[:record][:group_id]) if params[:record][:group_id]
     amount = record_params[:amount].to_i
     @record.amount = amount
     @record.amount = (amount * 60) if params[:time] = 'hours'
@@ -38,8 +49,9 @@ class RecordsController < ApplicationController
         format.html { redirect_to @record, notice: 'Record was successfully created.' }
         format.json { render :show, status: :created, location: @record }
       else
+        flash.now[:notice] = 'Error while creating record'
         format.html { render :new }
-        format.json { render json: @record.errors, status: :unprocessable_entity }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -75,6 +87,6 @@ class RecordsController < ApplicationController
   end
     # Only allow a list of trusted parameters through.
     def record_params
-      params.require(:record).permit(:name, :amount)
+      params.require(:record).permit(:name, :amount, :group_id)
     end
 end

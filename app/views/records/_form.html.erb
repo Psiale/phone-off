@@ -1,28 +1,34 @@
 <%= form_with(model: record, local: true) do |form| %>
-<% if record.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(record.errors.count, "error") %> prohibited this record from being saved:</h2>
+  <% if record.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(record.errors.count, "error") %> prohibited this record from being saved:</h2>
 
-      <ul>
-        <% record.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-<div class = "columns is-centered">
-  <div class = "column is-half ">
-  <div class ="box has-border-colored  ">
+        <ul>
+          <% record.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <div class = "columns is-centered">
+    
+    <div class = "column is-half ">
+  
+      <div class ="box has-border-colored  ">
+      
+        <div class = "field">
           <%= form.label :name, class: "label has-text-lavanda is-size-5" %>
-         <div class = "control ">
-         <%= form.text_field :name, class: "input  has-text-centered has-border-colored", placeholder: "Name your record, please" %>
-         
-         
+          <div class = "control ">
+          <%= form.text_field :name, class: "input  has-text-centered has-border-colored", placeholder: "Name your record, please" %>
+        </div>
+            
+            
 
-         <%# <%= collection_select(:record, :group_id, Group.all, :id, prompt: true) %> 
-           <%= form.label 'How many time did you use your cellphone?', class: "label has-text-lavanda is-size-5" %>
-         <div class = "control ">
-         <%= form.number_field :amount, in: 0..60,step: 1, class: "input  has-text-centered has-border-colored", placeholder: "time" %>
+            <%# <%= collection_select(:record, :group_id, Group.all, :id, prompt: true) %> 
+        <div class = "field">
+          <%= form.label 'How many time did you use your cellphone?', class: "label has-text-lavanda is-size-5" %>
+          <div class = "control ">
+          <%= form.number_field :amount, in: 0..60,step: 1, class: "input  has-text-centered has-border-colored", placeholder: "time" %>
           <span>
             <%= radio_button_tag(:time, "minutes", checked: true) %>
             <%= label_tag(:minutes, "minutes") %>
@@ -32,34 +38,47 @@
             <%= radio_button_tag(:time, "hours") %>
             <%= label_tag(:hours, "hours") %>
           </span>
-         
-         <p class="help has-text-lavanda is-size-6">Choose a group</p>
+        </div>
 
-    <div class="dropdown is-hoverable">
-      <div class="dropdown-trigger">
-        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
-          <span>Groups</span>
-          <span class="icon is-small">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
-          </span>
-        </button>
-      </div>
-        <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-        <div class="dropdown-content">
-        <% @groups.each do |group| %>
-          <div class="dropdown-item">
+        <br>
+
+        <p class="label is-size-5">Choose a group</p>
+
+
+        <div class="field">
+          <label class="label">Subject</label>
+          <div class="control">
+              <% if @groups %>
+                <% @groups.each do |group| %>
+                  <span> <%= check_box_tag "record[group_id][]", group.id %> <span><%= group.name %></span></span>
+                <% end %>
+                <% else %>
+                  <h2>You don't have any group yet <%= link_to 'create a new one', new_group_path %></h2>
+                
+              <% end %>
+              
+                
+              
             
-          <span> <%= link_to "#{group.name}", record_groups_path(record_group: { record_id: record.id, group_id: group.id }), method: :post %></span>
-        <% end %>
+          </div>
+
+
+        <br>
+
+        <div class="field is-grouped">
+          <div class="control">
+            <%= form.submit 'submit', class: 'button' %>
           </div>
         </div>
-        </div>
+
       </div>
+        
     </div>
-  <div class="actions">
-    <%= form.submit %>
+      
   </div>
+    
 <% end %>
+
   </div>
 </div> 
 
