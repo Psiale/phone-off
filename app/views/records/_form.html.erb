@@ -10,13 +10,14 @@
         </ul>
       </div>
     <% end %>
-  <div class = "columns is-centered">
+  
+
+  <div class = "columns is-centered ">
     
     <div class = "column is-half ">
   
       <div class ="box has-border-colored  ">
-      
-        <div class = "field">
+            <div class = "field">
           <%= form.label :name, class: "label has-text-lavanda is-size-5" %>
           <div class = "control ">
           <%= form.text_field :name, class: "input  has-text-centered has-border-colored", placeholder: "Name your record, please" %>
@@ -68,14 +69,14 @@
         <div class="field is-grouped">
           <div class="control">
             <%= form.submit 'submit', class: 'button' %>
-          </div>
-        </div>
+
 
       </div>
         
     </div>
       
   </div>
+        
     
 <% end %>
 
