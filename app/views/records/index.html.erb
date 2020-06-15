@@ -12,12 +12,15 @@
       <div class= item-records-history>
   
       <% record.groups.each do |group| %>
-                <div class= item-image> <%= image_tag(group.icon) %> <i class = "fas fa-lock"></i> </div>
-                  
+        <% if group.icon.attached? %>
+          <div class= item-image> <%= image_tag(group.icon) %> <i class = "fas fa-lock"></i> </div>
+        <% else %>
+        <div class= item-image>  <i class = "fas fa-lock"></i> </div>  
+        <% end %>   
       <% end %>
-              <div class= item-record-name><p>Record name</p> <%= record.name %> </div>
-              <div class= item-time-spent><p>Time spent </p> <%= record.amount %>  minutes</div>
-              <div class= item-created-at><p>Created at </p> <%= record.created_at.strftime("%A %d %B") %> </div>
+          <div class= item-record-name><p>Record name</p> <%= record.name %> </div>
+          <div class= item-time-spent><p>Time spent </p> <%= record.amount %>  minutes</div>
+          <div class= item-created-at><p>Created at </p> <%= record.created_at.strftime("%A %d %B") %> </div>
         </div>
           <div class="item-bottom-container">
             <div class=item-bottom-view>
