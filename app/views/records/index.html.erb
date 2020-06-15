@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+
 <div class="total-record-container">
   <div class= "total-record">
   <h1>Records</h1>
@@ -9,7 +10,6 @@
 
   <div>
     <% @records_with_group.each do |record| %>
-      </div>
     <div class= records-history-container>
       <div class=records-history>
           <div class= item-image></div>
@@ -18,14 +18,12 @@
           <div class= item-created-at><p>Created at </p> <%= record.created_at.strftime("%A %d %B") %></div>
       </div>
     </div>
-        <div><%= link_to 'Show', record %></td>
-        <div><%= link_to 'Edit', edit_record_path(record) %></td>
+        <div><%= link_to 'Show', record %></div>
+        <div><%= link_to 'Edit', edit_record_path(record) %></div>
         <div><%= link_to 'Destroy', record, method: :delete, data: { confirm: 'Are you sure?' } %></div>
       </div>
     <% end %>
   </div>
-
-<br>
 
 
 
