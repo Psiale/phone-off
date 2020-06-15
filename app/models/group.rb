@@ -4,5 +4,5 @@ class Group < ApplicationRecord
     has_one_attached :icon
     validates :name, presence: true
     validates :icon, presence: true
-    has_many :records, through: :record_groups
+    has_many :records, through: :record_groups, dependent: :destroy
 end
