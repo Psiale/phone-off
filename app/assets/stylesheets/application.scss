@@ -13,135 +13,191 @@
  *= require_tree .
  *= require_self
  */
- @import 'bulma';
+  @import 'bulma'; 
 
- $charcoal: #454851;
+ /* $charcoal: #454851;
  $turquoise-green: #95d7ae;
  $darksea-green: #7BAE7F;
  $russian-green: #73956F;
- $lavender-blush: #FCEFF9;
+ $lavender-blush: #FCEFF9; */
 
  a {
-     padding-bottom: 10px;
-     color: $charcoal;
- }
- .header {
-     background-color: $turquoise-green;
- }
-
- .icons {
-     color: $charcoal;
-     width: 60px;
-     height: 60px;
- }
-body, html {
-    background-color: $lavender-blush;
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
+    padding-bottom: 10px;
+    color:  #454851;
 }
- #drawer {
-     background-color: $lavender-blush;
-     position: fixed;
-     top: 0;
-     right: 0;
-     z-index: 1000;
-     width: 0;
-     height: 100%;
-     display: none;
-     flex-direction: column;
-     justify-content: space-evenly;
-     align-items: center;
-     #icon {
-         .icon-close {
-            width: 60px;
-            height: 60px;  
-         }
-        
-    }
- }
- .categories-container {
-    width: 70%;
-    height: 70%;
-    display: flex;
-    flex-direction: column;
-    .dr-categories {
-        margin-top: 10px;
-        height: max-content;
-        display:flex;
-        flex-direction: column;
-        .header-item {
-            box-shadow: 10px 10px ;
-            border-radius: 25px;
-            display: flex;
-            margin-bottom:75px;
-            justify-content: center;
-            width: 100%;
-            background-color: $darksea-green;
-            border: 1px solid $lavender-blush;
-        }
-    
-    }
- }
- #container {
-    transition: margin-right .5s;
- }
+.header {
+    background-color:#95d7ae;
+}
 
- //*si vas a borrar algo sera a partir de aqui, que empece a hacer mis desmadres*//
- .total-record-container{
-     display: flex;
+.icons {
+    color:  #454851;
+    width: 60px;
+    height: 60px;
+}
+body, html {
+   background-color: #FCEFF9;
+   width: 100%;
+   height: 100%;
+   overflow-x: hidden;
+}
+#drawer {
+    background-color: #FCEFF9;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    width: 0;
+    height: 100%;
+    display: none;
     flex-direction: column;
+    justify-content: space-evenly;
     align-items: center;
+}
+ 
+        .icon-close {
+           width: 60px;
+           height: 60px;  
+
+       
+   }
+
+.categories-container {
+   width: 70%;
+   height: 70%;
+   display: flex;
+   flex-direction: column;
+}
+   .dr-categories {
+       margin-top: 10px;
+       height: max-content;
+       display:flex;
+       flex-direction: column;
+   }
+       .header-item {
+           box-shadow: 10px 10px ;
+           border-radius: 25px;
+           display: flex;
+           margin-bottom:75px;
+           justify-content: center;
+           width: 100%;
+           background-color: #7BAE7F;
+           border: 1px solid #FCEFF9;
+       }
+
+
+#container {
+    height: 100%;
+    width: 100%;
+   transition: margin-right .5s;
+}
+
+/*si vas a borrar algo sera a partir de aqui, que empecé a hacer mis desmadres*/
+
+
+.total-records-container{
+   font-family: 'Roboto', sans-serif;
+    width: 95%;
+    height: 100%;
+   display:grid;
+   grid-template-rows: 20% 29% 12% 40%;
+   grid-template-areas:"total-record" 
+                       "records-history"
+                       "bottom-view"
+                       "form-new-record";
+   color:#454851;
+}
+
+ .item-total-record{
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     width: 200px;
+     height: 100px;
+     grid-area: total-record;
+     margin-top: 15px;
+     box-shadow: 10px 10px;
+     background-color: #95d7ae;
+     border-radius: 10px;
+}
+.total-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+  .item-records-history{
+   display: grid;
+   grid-area: records-history;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 33.3% 33.3% 33.3%;
+    grid-template-areas: "image record-name"
+                         "image time-spent"
+                         "image created-at";
+    row-gap: 5px;
+    column-gap: 5px;
     text-align: center;
- }
+    font-size: 15px;
+}
 
- .total-record{
-     width: 50%;
-     height: 75%; 
+.records-history{
+    display: grid;
+    
+}
+
+.item-image{
+    grid-area: image;
+    background-color: #73956F;
+}
+
+.item-record-name{
+    grid-area: record-name;
+    border: 2px solid #73956F;
+    border-radius: 10px;
+   }
+
+.item-time-spent{
+    grid-area: time-spent;
+    border: 2px solid #73956F;
+    border-radius: 10px;
+
+}
+
+.item-created-at{
+    grid-area: created-at;
+    border: 2px solid #73956F;
+    border-radius: 10px;
+
+
+   }
+   
+   .item-bottom-container {
+       grid-area: bottom-view;
+       display: flex;
+       width: 100%;
+       justify-content: center;
+   }
+
+.item-bottom-view{
+    margin-top: 25px;
+    display:flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: #95d7ae;
+    width: 300px;
+    height: 50px;
+    border-radius: 15px;
+    box-shadow: 2px 2px;
     font-size: 20px;
-    margin-top: 15px;
-    box-shadow: 10px 10px;
-    background-color: $turquoise-green;
-    font-weight: bolder;
- }
+}
 
- .records-history-container{
-     height: 150px;
-     margin-top: 25px ;
-     display: grid;
-     grid-template-columns: 50% 50%;
-     grid-template-rows: 33.3% 33.3% 33.3%;
-     background-color: red;
-     border-bottom: 8px $turquoise-green dotted;
- }
+.item-form-new-record{
+    border-top: 11px dotted #73956F ;
+    grid-area: form-new-record;
+    width: 100%;
+    text-align: center;
+    margin-top: 35px;
+    font-size: 20px;
 
- .records-history{
-     display: grid;
-     width: 100%;
-     height: 100%;
-     grid-template-areas: "image record-name"
-                          "image time-spent"
-                          "image created-at";
- }
-
- .item-image{
-     width: 150px;
-     height: 145px;
-     grid-area: image;
-     background-color: rebeccapurple;
- }
-
- .item-record-name{
-     grid-area: record-name;
-     background-color: royalblue;
- }
-
- .item-time-spent{
-     grid-area: time-spent;
-     background-color: salmon;
- }
-
- .item-created-at{
-     grid-area: created-at;
-     background-color: springgreen;
- }
+}

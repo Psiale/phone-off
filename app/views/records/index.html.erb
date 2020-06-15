@@ -1,31 +1,34 @@
 <p id="notice"><%= notice %></p>
 
 
-<div class="total-record-container">
-  <div class= "total-record">
-  <h1>Records</h1>
-   <h2><%= @amount %> minutes</h2>
+<div class="total-records-container">
+  <div class="total-container">
+    <div class= "item-total-record">
+      <h1>Records</h1>
+      <p> <%= @amount %>  minutes</p>
+    </div>  
   </div>
+  <% @records_with_group.each do |record| %>
+      <div class= item-records-history>
+  
+      <% record.groups.each do |group| %>
+                <div class= item-image> <%= image_tag(group.icon) %> <i class = "fas fa-lock"></i> </div>
+                  
+      <% end %>
+              <div class= item-record-name><p>Record name</p> <%= record.name %> </div>
+              <div class= item-time-spent><p>Time spent </p> <%= record.amount %>  minutes</div>
+              <div class= item-created-at><p>Created at </p> <%= record.created_at.strftime("%A %d %B") %> </div>
+        </div>
+          <div class="item-bottom-container">
+            <div class=item-bottom-view>
+              <%= link_to "View", record_path(record) %> 
+            </div>
+          </div>
+    </div>
+  <% end %>
+    <div class=item-form-new-record>
+      <h1> New Record</h1>
+        <%= render 'form', record: @record %>
+    </div>
 </div>
 
-  <div>
-    <% @records_with_group.each do |record| %>
-    <div class= records-history-container>
-      <div class=records-history>
-          <div class= item-image></div>
-          <div class= item-record-name><p>Record name | </p><%= record.name %></td>
-          <div class= item-time-spent><p>Time spent </p><%= record.amount %> minutes</td>
-          <div class= item-created-at><p>Created at </p> <%= record.created_at.strftime("%A %d %B") %></div>
-      </div>
-    </div>
-        <div><%= link_to 'Show', record %></div>
-        <div><%= link_to 'Edit', edit_record_path(record) %></div>
-        <div><%= link_to 'Destroy', record, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-      </div>
-    <% end %>
-  </div>
-
-
-
-<h1> New Record</h1>
-<%= render 'form', record: @record %>

@@ -6,6 +6,7 @@ gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
 # Use Puma as the app server
 gem 'bulma-rails'
 gem 'devise'
+gem 'carrierwave'
 gem 'cloudinary'
 gem 'figaro'
 gem 'puma', '~> 4.1'
