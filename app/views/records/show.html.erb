@@ -1,4 +1,23 @@
 <p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_record_path(@record) %> |
-<%= link_to 'Back', records_path %>
+    <div class="show-page-container">
+        <div class="image">
+        
+        <% @record.groups.each do |group| %>
+            <div class="user-photo"> <%= image_tag(group.icon) %></div>
+        <% end %>
+        </div>
+        <div class="record-name">
+            <div class="record-name-button"><%= @record.name %></div>
+        </div>
+        <div class="buttons">
+            <div class="edit">
+                <%= link_to 'Edit', edit_record_path(@record) %>
+            </div>
+            <div class="destroy">Destroy</div>
+            <div class="back">
+                <%= link_to 'Back', records_path %>
+            </div>
+        </div>
+    
+        </div>
+</p>

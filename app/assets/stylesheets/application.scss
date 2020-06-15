@@ -201,3 +201,91 @@ body, html {
     font-size: 20px;
 
 }
+
+// Records show page 
+
+.show-page-container{
+    font-family: 'Roboto', sans-serif;
+     width: 95%;
+     height: 100%;
+    color:#454851;
+    display: grid;
+    grid-template-rows: 70% 15% 10%;
+    grid-template-areas:"image"
+                        "record-name"
+                        "buttons";
+    row-gap: 10px;
+}
+
+.image{
+    grid-area: image;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-photo{
+    width: 80%;
+    height: 90%;
+    border: #7BAE7F 10px dashed;
+}
+
+.record-name{
+    grid-area: record-name;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.record-name-button{
+    width: 80%;
+    height: 70%;
+    background-color:#7BAE7F ;
+    box-shadow: 10px 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
+
+.buttons{
+    grid-area: buttons;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-areas: "edit destroy back";
+    column-gap: 5px;
+    font-size: 20px;
+    color: #FCEFF9;
+}
+
+.edit{
+    grid-area: edit;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#454851;
+
+}
+
+.destroy{
+    grid-area: destroy;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#454851;
+
+
+}
+
+.back{
+    grid-area: back;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#454851;
+
+}
