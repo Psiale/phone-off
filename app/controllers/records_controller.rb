@@ -1,5 +1,4 @@
-# frozen_string_literal: true
-
+#  Records controller
 class RecordsController < ApplicationController
   before_action :authenticate_user!
 
@@ -7,7 +6,9 @@ class RecordsController < ApplicationController
   # GET /records.json
   def index
     @groups = current_user.groups.all
-    @records_with_group = current_user.records.most_recent.includes(:record_groups).where.not(record_groups: { record_id: nil })
+    @records_with_group = current_user
+      .records.most_recent.includes(:record_groups)
+      .where.not(record_groups: { record_id: nil })
 
     @amount_with_group = @records_with_group.pluck(:amount).sum if @records_with_group
     @record = current_user.records.build
@@ -15,7 +16,9 @@ class RecordsController < ApplicationController
   end
 
   def index_no_group
-    @records_without_group = current_user.records.most_recent.includes(:record_groups).where(record_groups: { record_id: nil })
+    @records_without_group = current_user.records.most_recent
+      .includes(:record_groups)
+      .where(record_groups: { record_id: nil })
     @record = current_user.records.build
     @amount_without_group = @records_without_group.pluck(:amount).sum if @records_without_group
     @groups = current_user.groups.all
@@ -57,6 +60,7 @@ class RecordsController < ApplicationController
       end
     end
   end
+  # rubocop:enable
 
   # PATCH/PUT /records/1
   # PATCH/PUT /records/1.json

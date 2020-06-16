@@ -1,5 +1,4 @@
-# frozen_string_literal: true
-
+# Users Controller
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
@@ -50,6 +49,7 @@ class UsersController < ApplicationController
     end
   end
 
+  # rubocop:enable
   private
 
   def user_params

@@ -1,4 +1,3 @@
-# frozen_string_literal: true
-
+# RecordGroups helper module
 module RecordGroupsHelper
 end

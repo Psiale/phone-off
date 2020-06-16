@@ -1,5 +1,4 @@
-# frozen_string_literal: true
-
+# RecordGroups controller
 class RecordGroupsController < ApplicationController
   before_action :set_record_group, only: %i[show edit update destroy]
 

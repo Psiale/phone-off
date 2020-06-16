@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 RSpec.describe Record, type: :model do
@@ -22,7 +20,7 @@ RSpec.describe Record, type: :model do
     expect(subject).to_not be_valid
   end
   it 'should belongs to author' do
-    t = Record.reflect_on_association(:User)
+    Record.reflect_on_association(:User)
   end
   it 'should have many groups' do
     t = User.reflect_on_association(:groups)
