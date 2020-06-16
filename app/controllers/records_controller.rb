@@ -8,7 +8,7 @@ class RecordsController < ApplicationController
     @groups = Group.all
     @records_with_group = current_user.records.includes(:record_groups).where.not(record_groups: { record_id: nil})
     
-    @amount = Record.pluck(:amount).sum if Record.exists?
+    @amount_with_group = @records_with_group.pluck(:amount).sum if Record.exists?
     @record = current_user.records.build
     @records = Record.all
   end
@@ -16,7 +16,7 @@ class RecordsController < ApplicationController
   def index_no_group
     @records_without_group = current_user.records.includes(:record_groups).where(record_groups: { record_id: nil})
     @record = current_user.records.build
-    @amount = Record.pluck(:amount).sum if Record.exists?
+    @amount_without_group = @record_without_group.pluck(:amount).sum if Record.exists?
     @groups = Group.all
   end
 
