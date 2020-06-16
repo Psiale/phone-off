@@ -1,28 +1,31 @@
 class RecordsController < ApplicationController
-  before_action :set_record, only: [:show, :edit, :update, :destroy]
+  
+  before_action :authenticate_user!
 
   # GET /records
   # GET /records.json
   def index
-    @groups = Group.all
-    @records_with_group = current_user.records.includes(:record_groups).where.not(record_groups: { record_id: nil})
+    @groups = current_user.groups.all
+    @records_with_group = current_user.records.most_recent.includes(:record_groups).where.not(record_groups: { record_id: nil})
     
-    @amount = Record.pluck(:amount).sum if Record.exists?
+    @amount_with_group = @records_with_group.pluck(:amount).sum if @records_with_group
     @record = current_user.records.build
     @records = Record.all
   end
 
   def index_no_group
-    @records_without_group = current_user.records.includes(:record_groups).where(record_groups: { record_id: nil})
+    @records_without_group = current_user.records.most_recent.includes(:record_groups).where(record_groups: { record_id: nil})
     @record = current_user.records.build
-    @amount = Record.pluck(:amount).sum if Record.exists?
-    @groups = Group.all
+    @amount_without_group = @records_without_group.pluck(:amount).sum if @records_without_group
+    @groups = current_user.groups.all
   end
 
   # GET /records/1
   # GET /records/1.json
   def show
+    @record = Record.find(params[:id])
   end
+
 
   # GET /records/new
   def new
@@ -42,7 +45,7 @@ class RecordsController < ApplicationController
     @record.groups = Group.find(params[:record][:group_id]) if params[:record][:group_id]
     amount = record_params[:amount].to_i
     @record.amount = amount
-    @record.amount = (amount * 60) if params[:time] = 'hours'
+    @record.amount = (amount * 60) if params[:time] == 'hours'
 
     respond_to do |format|
       if @record.save

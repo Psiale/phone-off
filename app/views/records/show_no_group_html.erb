@@ -1,15 +1,6 @@
-<p id="notice"><%= notice %></p>
 <div class="show-page-container">
         <div class="image">
-        
-        <% @record.groups.each do |group| %>
-            <% if group.icon %>
-                <div class="user-photo"> <%= image_tag(group.icon) %></div>
-            <% else %>
-                <div class="user-photo"> <%= image_tag('unnamed.png') %></div>
-            <% end %>
-
-        <% end %>
+            <div class="user-photo"> <%= image_tag('unnamed.png') %></div>
         </div>
         <div class="record-name">
             <div class="record-name-button"><h1><%= @record.name %></h1></div>
@@ -18,8 +9,9 @@
             <div class="edit">
                 <%= link_to 'Edit', edit_record_path(@record) %>
             </div>
+            <div class="destroy"><%= link_to 'Destroy', @record, method: :delete, data: { confirm: 'Are you sure?' } %></div>
             <div class="back">
-                <%= link_to 'Back', records_path %>
+                <%= link_to 'Back', index_no_group_path %>
             </div>
         </div>
     

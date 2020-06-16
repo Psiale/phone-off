@@ -1,30 +1,36 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Records</h1>
- <h2><%= @amount %> minutes</h2>
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div class="total-container">
+    <div class= "item-total-record">
+      <h1>Records</h1>
+      <h2> <%= @amount_with_group %>  minutes</h2>
+    </div>  
+  </div>
+<div class="total-records-container">
+  <% @records_with_group.each do |record| %>
+    <div class= item-records-history>
+  
+        <% record.groups.each do |group| %>
+        <div class= item-image> <%= image_tag(group.icon) %></div>
+                  
+        <% end %>
+          <div class = "record-info-container">
+            <div class= item-record-name><p>Record name</p> <%= record.name %> </div>
+            <div class= item-time-spent><p>Time spent </p> <%= record.amount %>  minutes</div>
+            <div class= item-created-at><p>Created at </p> <%= record.created_at.strftime("%A %d %B") %> </div>
+          </div>
 
-  <tbody>
-    <% @records_with_group.each do |record| %>
-      <tr>
-        <td><p>record name | </p><%= record.name %></td>
-        <td><p>time spent </p><%= record.amount %> minutes</td>
-        <td><%= link_to 'Show', record %></td>
-        <td><%= link_to 'Edit', edit_record_path(record) %></td>
-        <td><%= link_to 'Destroy', record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          <div class="item-button-container">
+            <div class=item-button-view>
+              <%= link_to "View", record_path(record), class: "has-text is-size-2" %> 
+            </div>
+          </div>
+    </div>
 
-<br>
+  <% end %>
+    <div class=item-form-new-record>
+      <h1> New Record</h1>
+        <%= render 'form', record: @record %>
+    </div>
+</div>
 
-
-
-<h1> New Record</h1>
-<%= render 'form', record: @record %>

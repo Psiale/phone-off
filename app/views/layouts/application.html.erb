@@ -7,19 +7,46 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" data-mutate-approach="sync"></script>
   </head>
 
   <body>
 
-<p class="navbar-text float-left">
-<% if user_signed_in? %>
-  Logged in as <strong><%= current_user.name %></strong>.
-  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-<% else %>
-  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-<% end %>
+  <nav class="navbar header">
+    <div class="navbar-brand">
+    <div class="navbar-item is-size-1 is-hidden-touch" onclick="menu_onClick()" ><i class=" fas fa-bars icons"></i></div>
+      <div class="navbar-burger is-size-1"id = "burger" onclick="menu_onClick()" >
+      <i class="fas fa-bars icons"></i>
+      </div>
+    </div>
+
+  </nav> 
+  <div class="drawer" id = "drawer">
+    <div id="icon" onclick ="close_drawer()"><i class="fas fa-times icons icon-close"></i></div>
+    <div class = "categories-container">
+      <div class="dr-categories">
+        <% if user_signed_in? %>
+          <div class ="header-item is-size-2"><%= link_to 'Edit profile', edit_user_registration_path  %></div>
+          <div class ="header-item is-size-2"><%= link_to "Logout", destroy_user_session_path, method: :delete  %></div>
+        <% else %>
+          <div class = "header-item is-size-2"><%= link_to "Sign up", new_user_registration_path %></div>
+          <div class = "header-item is-size-2"><%= link_to "Login", new_user_session_path  %></div>
+    
+        <% end %>
+      </div>
+      <% if user_signed_in? %>
+        <div class="dr-categories">
+          <div class = "header-item is-size-2"><%= link_to 'All my records', records_path %></div>
+          <div class = "header-item is-size-2"><%= link_to 'All my external records', index_no_group_path%></div>
+          <div class = "header-item is-size-2"><%= link_to 'All created groups', groups_path %></div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  
+
+<p class=" float-left">
+
 </p>
 
 <% if notice %>
@@ -28,6 +55,28 @@
 <% if alert %>
   <p class="alert alert-danger"><%= alert %></p>
 <% end %>
-    <%= yield %>
+
+   <div id = "container">
+    <%= yield %> 
+   
+   </div>
+    <script>
+      var menu_button = document.getElementById("burger");
+      var drawer = document.getElementById("drawer");
+      var container = document.getElementById("container")
+      
+      function menu_onClick() {
+        drawer.style.display = 'flex'
+        drawer.style.width = '100%';
+        container.style.marginRight = '100%';
+      }
+
+      function close_drawer() {
+        drawer.style.width = '0';
+        drawer.style.display = 'none'
+        container.style.marginRight = '0';
+      }
+      
+    </script>
   </body>
 </html>

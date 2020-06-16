@@ -10,31 +10,32 @@
         </ul>
       </div>
     <% end %>
-  <div class = "columns is-centered">
-    
-    <div class = "column is-half ">
   
-      <div class ="box has-border-colored  ">
-      
-        <div class = "field">
-          <%= form.label :name, class: "label has-text-lavanda is-size-5" %>
+
+  <div class = "columns is-centered ">
+    
+    <div class = "column is-four-fifths ">
+  
+      <div class ="box has-background-charcoal">
+            <div class = "field">
+          <%= form.label "What's the name of your record?", class: "label has-text-lavanda is-size-1" %>
           <div class = "control ">
-          <%= form.text_field :name, class: "input  has-text-centered has-border-colored", placeholder: "Name your record, please" %>
+          <%= form.text_field :name, class: "input  has-text-centered has-border-colored is-size-3", placeholder: "Name your record, please" %>
         </div>
             
             
 
             <%# <%= collection_select(:record, :group_id, Group.all, :id, prompt: true) %> 
         <div class = "field">
-          <%= form.label 'How many time did you use your cellphone?', class: "label has-text-lavanda is-size-5" %>
+          <%= form.label 'How many time did you use your cellphone?', class: "label has-text-lavanda is-size-1" %>
           <div class = "control ">
-          <%= form.number_field :amount, in: 0..60,step: 1, class: "input  has-text-centered has-border-colored", placeholder: "time" %>
-          <span>
-            <%= radio_button_tag(:time, "minutes", checked: true) %>
+          <%= form.number_field :amount, in: 0..60,step: 1, class: "input  has-text-centered has-text-charcoal is-size-3", placeholder: "time" %>
+          <span class = "has-text is-size-2 has-text-lavanda">
+            <span class = "is-size-2"><%= radio_button_tag(:time, "minutes", true) %></span>
             <%= label_tag(:minutes, "minutes") %>
           </span>
 
-          <span>
+          <span class = "has-text is-size-2 has-text-lavanda">
             <%= radio_button_tag(:time, "hours") %>
             <%= label_tag(:hours, "hours") %>
           </span>
@@ -42,18 +43,20 @@
 
         <br>
 
-        <p class="label is-size-5">Choose a group</p>
+        <p class="label is-size-2 has-text-lavanda">Choose a group</p>
 
 
         <div class="field">
-          <label class="label">Subject</label>
           <div class="control">
-              <% if @groups %>
+              <% if current_user.groups.count.positive? %>
                 <% @groups.each do |group| %>
-                  <span> <%= check_box_tag "record[group_id][]", group.id %> <span><%= group.name %></span></span>
+                  <div> <%= check_box_tag "record[group_id][]", group.id %> <span class = "has-text is-size-2 has-text-lavanda"><%= group.name %></span></div>
                 <% end %>
                 <% else %>
-                  <h2>You don't have any group yet <%= link_to 'create a new one', new_group_path %></h2>
+                  <div class = "column has-text-centered">
+                    <p class=" label is-size-3 has-text-lavanda">You don't have any group yet </p>
+                     <%= link_to 'Create a new one', new_group_path, class: "button has-background-turquoise has-text-charcoal is-size-4" %>
+                  </div>
                 
               <% end %>
               
@@ -65,17 +68,17 @@
 
         <br>
 
-        <div class="field is-grouped">
+        <div class="field ">
           <div class="control">
-            <%= form.submit 'submit', class: 'button' %>
-          </div>
-        </div>
+            <%= form.submit 'submit', class: 'button is-fullwidth has-text is-size-3' %>
+
 
       </div>
         
     </div>
       
   </div>
+        
     
 <% end %>
 
