@@ -1,4 +1,5 @@
 class RecordsController < ApplicationController
+  
   before_action :set_record, only: [:show, :edit, :update, :destroy]
 
   # GET /records
@@ -43,7 +44,7 @@ class RecordsController < ApplicationController
     @record.groups = Group.find(params[:record][:group_id]) if params[:record][:group_id]
     amount = record_params[:amount].to_i
     @record.amount = amount
-    @record.amount = (amount * 60) if params[:time] = 'hours'
+    @record.amount = (amount * 60) if params[:time] == 'hours'
 
     respond_to do |format|
       if @record.save

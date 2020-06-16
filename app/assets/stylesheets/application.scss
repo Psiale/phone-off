@@ -15,11 +15,24 @@
  */
   @import 'bulma'; 
 
- /* $charcoal: #454851;
+  $charcoal: #454851;
  $turquoise-green: #95d7ae;
  $darksea-green: #7BAE7F;
  $russian-green: #73956F;
- $lavender-blush: #FCEFF9; */
+ $lavender-blush: #FCEFF9;
+ 
+ @mixin charcoal-form {
+     background-color: $charcoal;
+     opacity: 0.8;
+    
+ }
+
+h1 {
+    font-size: 100px;
+}
+ h2 {
+    font-size: 70px;
+}
 
  a {
     padding-bottom: 10px;
@@ -98,12 +111,8 @@ body, html {
    font-family: 'Roboto', sans-serif;
     width: 95%;
     height: 100%;
-   display:grid;
-   grid-template-rows: 20% 29% 12% 40%;
-   grid-template-areas:"total-record" 
-                       "records-history"
-                       "bottom-view"
-                       "form-new-record";
+   flex-direction: column;
+   justify-content: space-around;
    color:#454851;
 }
 
@@ -112,80 +121,86 @@ body, html {
      flex-direction: column;
      justify-content: center;
      align-items: center;
-     width: 200px;
-     height: 100px;
-     grid-area: total-record;
-     margin-top: 15px;
-     box-shadow: 10px 10px;
+     width: 60%;
+     height: 91%;
+    box-shadow: 20px 20px;
      background-color: #95d7ae;
      border-radius: 10px;
 }
 .total-container {
+    align-items: center;
     width: 100%;
+    height: 300px;
     display: flex;
     justify-content: center;
+
 }
 
   .item-records-history{
-   display: grid;
-   grid-area: records-history;
-    grid-template-columns: 40% 60%;
-    grid-template-rows: 33.3% 33.3% 33.3%;
-    grid-template-areas: "image record-name"
-                         "image time-spent"
-                         "image created-at";
-    row-gap: 5px;
-    column-gap: 5px;
+    margin-top: 20px;
+    display: grid;
     text-align: center;
-    font-size: 15px;
+    font-size: 38px;
+    row-gap: 50px;
+    grid-template-rows: 60% 20% 20%;
+    grid-template-areas:"item-image"
+                        "item-records"
+                        "item-button";
 }
 
-.records-history{
-    display: grid;
-    
-}
 
 .item-image{
-    grid-area: image;
-    background-color: #73956F;
+    grid-area: item-image;
+    width: 100%;
+    height: 100%;
 }
 
+.item-records {
+    display: grid;
+    grid-area: item-records;
+}
+.record-info-container {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-areas: "item-record-name item-time-spent item-created-at";
+    column-gap: 10px;
+}
 .item-record-name{
-    grid-area: record-name;
-    border: 2px solid #73956F;
+    grid-area: item-record-name;
+    border: 4px solid #73956F;
     border-radius: 10px;
    }
 
 .item-time-spent{
-    grid-area: time-spent;
-    border: 2px solid #73956F;
+    grid-area:item-time-spent ;
+    border: 4px solid #73956F;
     border-radius: 10px;
 
 }
 
 .item-created-at{
-    grid-area: created-at;
-    border: 2px solid #73956F;
+    grid-area:item-created-at;
+    border: 4px solid #73956F;
     border-radius: 10px;
 
 
    }
    
-   .item-bottom-container {
-       grid-area: bottom-view;
+   .item-button-container {
        display: flex;
+       grid-area: item-button;
        width: 100%;
        justify-content: center;
    }
 
-.item-bottom-view{
+.item-button-view{
     margin-top: 25px;
     display:flex;
     text-align: center;
     justify-content: center;
     align-items: center;
     background-color: #95d7ae;
-    width: 300px;
+    width: 400px;
     height: 50px;
     border-radius: 15px;
     box-shadow: 2px 2px;
@@ -194,7 +209,6 @@ body, html {
 
 .item-form-new-record{
     border-top: 11px dotted #73956F ;
-    grid-area: form-new-record;
     width: 100%;
     text-align: center;
     margin-top: 35px;
@@ -206,15 +220,23 @@ body, html {
 
 .show-page-container{
     font-family: 'Roboto', sans-serif;
-     width: 95%;
+     width: 100%;
      height: 100%;
     color:#454851;
     display: grid;
-    grid-template-rows: 70% 15% 10%;
+    grid-template-rows: 50% 15% 10%;
     grid-template-areas:"image"
                         "record-name"
                         "buttons";
     row-gap: 10px;
+}
+
+.image-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
 .image{
@@ -225,8 +247,11 @@ body, html {
 }
 
 .user-photo{
-    width: 80%;
-    height: 90%;
+    width: 70%;
+    display: flex;
+    min-width: 200px;
+    min-height: 200px;
+    height: 70%;
     border: #7BAE7F 10px dashed;
 }
 
@@ -255,8 +280,10 @@ body, html {
     grid-template-columns: 33% 33% 33%;
     grid-template-areas: "edit destroy back";
     column-gap: 5px;
-    font-size: 20px;
-    color: #FCEFF9;
+    font-size: 70px;
+    a {
+        color: #FCEFF9;
+    }
 }
 
 .edit{
@@ -288,4 +315,17 @@ body, html {
     align-items: center;
     background-color:#454851;
 
+}
+
+// Form
+.has-background-charcoal {
+    @include charcoal-form();
+    .has-text-lavanda {
+        color: $lavender-blush;
+    }
+    input[type=radio],
+    input[type=checkbox] {
+        transform: scale(2.5);
+        margin: 0 8px;
+    }
 }

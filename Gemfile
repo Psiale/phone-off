@@ -8,6 +8,8 @@ gem 'bulma-rails'
 gem 'devise'
 gem 'carrierwave'
 gem 'cloudinary'
+gem 'image_processing'
+
 gem 'figaro'
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
