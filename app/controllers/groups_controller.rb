@@ -5,7 +5,7 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = current_user.groups.all
+    @groups = current_user.groups.most_recent.all
     @group = current_user.groups.build
   end
 

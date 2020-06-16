@@ -152,6 +152,8 @@ body, html {
 .item-image{
     grid-area: item-image;
     width: 100%;
+    display: flex;
+    justify-content: center;
     max-height: 100%;
     height: 100%;
     border-top: $russian-green 1px solid;

@@ -5,4 +5,6 @@ class Record < ApplicationRecord
     validates :name, presence: true
     has_many :record_groups
     has_many :groups, through: :record_groups
+
+scope :most_recent, -> { order(created_at: :desc) }
 end
