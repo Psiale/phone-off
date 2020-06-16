@@ -53,7 +53,7 @@ class RecordsController < ApplicationController
         format.json { render :show, status: :created, location: @record }
       else
         flash.now[:notice] = 'Error while creating record'
-        format.html { render :new }
+        format.html { render :index }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
