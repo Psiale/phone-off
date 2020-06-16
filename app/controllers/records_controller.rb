@@ -1,6 +1,6 @@
 class RecordsController < ApplicationController
   
-  before_action :set_record, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /records
   # GET /records.json
@@ -25,6 +25,7 @@ class RecordsController < ApplicationController
   def show
     @record = Record.find(params[:id])
   end
+
 
   # GET /records/new
   def new

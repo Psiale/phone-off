@@ -7,10 +7,10 @@
     <% @groups.each do |group| %>
       <div class="item-record-history">
         <div class = "item-image"><%= image_tag(group.icon) %></div>
-          <div>
-            <div class="has-text-centered item-record-name"><p>Group name</p> <%= group.name %> </div>
-            <div class= " has-text-centered item-created-at "><p>Created at </p> <%= group.created_at.strftime("%A %d %B") %> </div>
-          </div>
+          <div class= "group-info-container">
+            <div class="has-text-centered is-size-3 item-record-name"><p>Group name</p> <%= group.name %> </div>
+            <div class= " has-text-centered item-created-at is-size-3 "><p>Created at </p> <%= group.created_at.strftime("%A %d %B") %> </div>
+          </div> 
           <div class="item-button-container">
             <div class=item-button-view>
               <%= link_to "View", group_path(group), class: "has-text is-size-2" %> 

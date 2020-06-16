@@ -1,34 +1,49 @@
-<h2>Sign up</h2>
+<div class="column has-text-centered">
+  <h2>Sign up</h2>
+</div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-
+  <div class = "columns is-centered ">
+    
+    <div class = "column is-four-fifths ">
+  
+      <div class ="box has-background-charcoal">
     <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    <%= f.label :name, class: "label has-text-lavanda is-size-1" %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "input  has-text-centered has-border-colored is-size-3" %>
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :email, class: "label has-text-lavanda is-size-1" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input  has-text-centered has-border-colored is-size-3" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :password, class: "label has-text-lavanda is-size-1" %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", class: "input  has-text-centered has-border-colored is-size-3" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.label :password_confirmation, class: "label has-text-lavanda is-size-1" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input  has-text-centered has-border-colored is-size-3"%>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <div class= 'column has-text-centered'><%= f.submit "Sign up", class: 'button has-background-turquoise has-text-charcoal has-text is-size-2'%></div>
   </div>
-<% end %>
+      </div>
+        
+    </div>
+      <% end %>
+  </div>
+<br><br>
 
-<%= render "devise/shared/links" %>
+
+
+    
+
+<div class = "button has-background-charcoal is-size-2 "> <p class = "has-text-lavanda has-text-centered is-size-2">Log in</p><%= render "devise/shared/links" %></div>

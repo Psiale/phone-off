@@ -142,7 +142,7 @@ body, html {
     text-align: center;
     font-size: 38px;
     row-gap: 50px;
-    grid-template-rows: 60% 20% 20%;
+    grid-template-rows: 60% 10% 20%;
     grid-template-areas:"item-image"
                         "item-records"
                         "item-button";
@@ -153,6 +153,8 @@ body, html {
     grid-area: item-image;
     width: 100%;
     height: 100%;
+    border-top: $russian-green 1px solid;
+    padding-top: 30px;
 }
 
 .item-records {
@@ -165,6 +167,14 @@ body, html {
     grid-template-areas: "item-record-name item-time-spent item-created-at";
     column-gap: 10px;
 }
+
+.group-info-container {
+    display: grid;
+    grid-template-columns: 49% 49%;
+    grid-template-areas: "item-record-name item-created-at";
+    column-gap: 20px;
+}
+
 .item-record-name{
     grid-area: item-record-name;
     border: 4px solid #73956F;
@@ -194,7 +204,7 @@ body, html {
    }
 
 .item-button-view{
-    margin-top: 25px;
+    margin: 25px;
     display:flex;
     text-align: center;
     justify-content: center;
@@ -240,7 +250,9 @@ body, html {
 }
 
 .image{
+    margin: 60px;
     grid-area: image;
+    border: $charcoal dashed 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -318,10 +330,17 @@ body, html {
 }
 
 // Form
+
+.has-background-turquoise {
+    background-color: $turquoise-green;
+}
 .has-background-charcoal {
     @include charcoal-form();
     .has-text-lavanda {
         color: $lavender-blush;
+    }
+    .has-text-charcoal {
+        color: $charcoal;
     }
     input[type=radio],
     input[type=checkbox] {

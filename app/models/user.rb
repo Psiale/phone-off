@@ -5,7 +5,7 @@ validates :email, uniqueness: true
 validates :name, uniqueness: true
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :rememberable, :validatable
     has_many :records, foreign_key: :author_id
     has_many :groups
 
