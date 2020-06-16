@@ -1,1 +1,3 @@
-json.partial! "groups/group", group: @group
+# frozen_string_literal: true
+
+json.partial! 'groups/group', group: @group

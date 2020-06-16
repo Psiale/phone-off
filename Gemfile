@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.5'
@@ -5,9 +7,9 @@ ruby '2.6.5'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
 # Use Puma as the app server
 gem 'bulma-rails'
-gem 'devise'
 gem 'carrierwave'
 gem 'cloudinary'
+gem 'devise'
 gem 'image_processing'
 
 gem 'figaro'

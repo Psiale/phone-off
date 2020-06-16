@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class RecordGroupsController < ApplicationController
-  before_action :set_record_group, only: [:show, :edit, :update, :destroy]
+  before_action :set_record_group, only: %i[show edit update destroy]
 
   # GET /record_groups
   # GET /record_groups.json
@@ -9,8 +11,7 @@ class RecordGroupsController < ApplicationController
 
   # GET /record_groups/1
   # GET /record_groups/1.json
-  def show
-  end
+  def show; end
 
   # GET /record_groups/new
   def new
@@ -18,8 +19,7 @@ class RecordGroupsController < ApplicationController
   end
 
   # GET /record_groups/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /record_groups
   # POST /record_groups.json
@@ -62,13 +62,14 @@ class RecordGroupsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_record_group
-      @record_group = RecordGroup.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def record_group_params
-      params.require(:record_group).permit(:record_id, :group_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_record_group
+    @record_group = RecordGroup.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def record_group_params
+    params.require(:record_group).permit(:record_id, :group_id)
+  end
 end

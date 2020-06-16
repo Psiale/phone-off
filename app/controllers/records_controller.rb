@@ -1,20 +1,21 @@
+# frozen_string_literal: true
+
 class RecordsController < ApplicationController
-  
   before_action :authenticate_user!
 
   # GET /records
   # GET /records.json
   def index
     @groups = current_user.groups.all
-    @records_with_group = current_user.records.most_recent.includes(:record_groups).where.not(record_groups: { record_id: nil})
-    
+    @records_with_group = current_user.records.most_recent.includes(:record_groups).where.not(record_groups: { record_id: nil })
+
     @amount_with_group = @records_with_group.pluck(:amount).sum if @records_with_group
     @record = current_user.records.build
     @records = Record.all
   end
 
   def index_no_group
-    @records_without_group = current_user.records.most_recent.includes(:record_groups).where(record_groups: { record_id: nil})
+    @records_without_group = current_user.records.most_recent.includes(:record_groups).where(record_groups: { record_id: nil })
     @record = current_user.records.build
     @amount_without_group = @records_without_group.pluck(:amount).sum if @records_without_group
     @groups = current_user.groups.all
@@ -26,21 +27,19 @@ class RecordsController < ApplicationController
     @record = Record.find(params[:id])
   end
 
-
   # GET /records/new
   def new
     @record = current_user.records.build
   end
 
   # GET /records/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /records
   # POST /records.json
   def create
     @record = current_user.records.build(record_params)
-    
+
     # @record_without_group = current_user.records.includes(:record_groups).where(record_groups { record_id: nil})
     @record.groups = Group.find(params[:record][:group_id]) if params[:record][:group_id]
     amount = record_params[:amount].to_i
@@ -53,7 +52,7 @@ class RecordsController < ApplicationController
         format.json { render :show, status: :created, location: @record }
       else
         flash.now[:notice] = 'Error while creating record'
-        format.html { render :new }
+        format.html { render :index }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -88,8 +87,9 @@ class RecordsController < ApplicationController
   def set_record
     @record = Record.find(params[:id])
   end
-    # Only allow a list of trusted parameters through.
-    def record_params
-      params.require(:record).permit(:name, :amount, :group_id)
-    end
+
+  # Only allow a list of trusted parameters through.
+  def record_params
+    params.require(:record).permit(:name, :amount, :group_id)
+  end
 end

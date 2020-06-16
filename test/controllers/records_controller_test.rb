@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class RecordsControllerTest < ActionDispatch::IntegrationTest
@@ -5,40 +7,40 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
     @record = records(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get records_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_record_url
     assert_response :success
   end
 
-  test "should create record" do
+  test 'should create record' do
     assert_difference('Record.count') do
-      post records_url, params: { record: {  } }
+      post records_url, params: { record: {} }
     end
 
     assert_redirected_to record_url(Record.last)
   end
 
-  test "should show record" do
+  test 'should show record' do
     get record_url(@record)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_record_url(@record)
     assert_response :success
   end
 
-  test "should update record" do
-    patch record_url(@record), params: { record: {  } }
+  test 'should update record' do
+    patch record_url(@record), params: { record: {} }
     assert_redirected_to record_url(@record)
   end
 
-  test "should destroy record" do
+  test 'should destroy record' do
     assert_difference('Record.count', -1) do
       delete record_url(@record)
     end

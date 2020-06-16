@@ -20,7 +20,7 @@
             <div class = "field">
           <%= form.label "What's the name of your record?", class: "label has-text-lavanda is-size-1" %>
           <div class = "control ">
-          <%= form.text_field :name, class: "input  has-text-centered has-border-colored is-size-3", placeholder: "Name your record, please" %>
+          <%= form.text_field :name, class: "input  has-text-centered has-border-colored is-size-3", placeholder: "Name your record, please", disable: false %>
         </div>
             
             
@@ -49,7 +49,7 @@
         <div class="field">
           <div class="control">
               <% if current_user.groups.count.positive? %>
-                <% @groups.each do |group| %>
+                <% current_user.groups.each do |group| %>
                   <div> <%= check_box_tag "record[group_id][]", group.id %> <span class = "has-text is-size-2 has-text-lavanda"><%= group.name %></span></div>
                 <% end %>
                 <% else %>
