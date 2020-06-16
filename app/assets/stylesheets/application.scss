@@ -156,6 +156,11 @@ body, html {
     height: 100%;
     border-top: $russian-green 1px solid;
     padding-top: 30px;
+
+    img {
+        width: 80%;
+        height: 80%;
+    }
 }
 
 .item-records {
