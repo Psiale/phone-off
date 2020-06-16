@@ -1,10 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Groups</h1>
+<div class="column has-text-centered">
+  <h2>Groups</h2>
+</div>
 
 
   <div class = "total-records-container">
-    <% @groups.each do |group| %>
+  <% if @groups.count.positive? %>
+        <% @groups.each do |group| %>
       <div class="item-record-history">
         <div class = "item-image"><%= image_tag(group.icon) %></div>
           <div class= "group-info-container">
@@ -22,6 +25,13 @@
         <h1> New Group</h1>
         <%= render 'form', group: @group %>
       </div>
+  <% else %>
+    <div class = "column has-text-centered">
+      <p class=" label is-size-3 has-text-lavanda">You don't have any group yet </p>
+        <%= link_to 'Create a new one', new_group_path, class: "button has-background-turquoise has-text-charcoal is-size-4" %>
+    </div>
+  <% end %>
+  
     </div>
 <br>
 

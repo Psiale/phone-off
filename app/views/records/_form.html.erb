@@ -48,12 +48,15 @@
 
         <div class="field">
           <div class="control">
-              <% if @groups %>
+              <% if current_user.groups.count.positive? %>
                 <% @groups.each do |group| %>
                   <div> <%= check_box_tag "record[group_id][]", group.id %> <span class = "has-text is-size-2 has-text-lavanda"><%= group.name %></span></div>
                 <% end %>
                 <% else %>
-                  <h2>You don't have any group yet <%= link_to 'create a new one', new_group_path %></h2>
+                  <div class = "column has-text-centered">
+                    <p class=" label is-size-3 has-text-lavanda">You don't have any group yet </p>
+                     <%= link_to 'Create a new one', new_group_path, class: "button has-background-turquoise has-text-charcoal is-size-4" %>
+                  </div>
                 
               <% end %>
               
