@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <div class="total-records-container">
-<div class = "item-records-history">
+    <div class = "item-records-history">
                 <div class= item-image> <%= image_tag(@group.icon) %></div>
         <% @group.records.each do |record| %>
             <div class="group-info-container">
@@ -8,10 +8,12 @@
                 <div class= "has-text is-size-2 item-created-at "><p>Created at </p> <%= record.created_at.strftime("%A %d %B") %> </div>
             </div>
         <% end %>
+        <div class = "columns is-half has-text-centered">
             <div class=item-button-view>
-              <%= link_to 'Back', groups_path, class: "has-text is-size-2" %>
+                <%= link_to 'Back', groups_path, class: "has-text is-size-2" %>
             </div>
-</div> 
+        </div>
+    </div> 
 </div>
 
 

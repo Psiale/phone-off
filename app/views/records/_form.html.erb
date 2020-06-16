@@ -29,7 +29,7 @@
         <div class = "field">
           <%= form.label 'How many time did you use your cellphone?', class: "label has-text-lavanda is-size-1" %>
           <div class = "control ">
-          <%= form.number_field :amount, in: 0..60,step: 1, class: "input  has-text-centered has-text-lavanda is-size-3", placeholder: "time" %>
+          <%= form.number_field :amount, in: 0..60,step: 1, class: "input  has-text-centered has-text-charcoal is-size-3", placeholder: "time" %>
           <span class = "has-text is-size-2 has-text-lavanda">
             <span class = "is-size-2"><%= radio_button_tag(:time, "minutes", true) %></span>
             <%= label_tag(:minutes, "minutes") %>
