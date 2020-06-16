@@ -1,11 +1,15 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class = "column has-text-centered"><h2>Edit <%= resource_name.to_s.humanize %></h2></div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-
+<div class = "columns is-centered ">
+    
+    <div class = "column is-four-fifths ">
+  
+      <div class ="box has-background-charcoal">
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "box" %>
+    <%= f.label :email, class: "label has-text-lavanda is-size-1" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input  has-text-centered has-border-colored is-size-3" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -13,8 +17,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.label :password, class: "label has-text-lavanda is-size-1" %> <i class = "has-text-lavanda is-size-1">(leave blank if you don't want to change it)</i><br />
+    <%= f.password_field :password, autocomplete: "new-password", class: "input  has-text-centered has-border-colored is-size-3" %>
     <% if @minimum_password_length %>
       <br />
       <em><%= @minimum_password_length %> characters minimum</em>
@@ -22,22 +26,25 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.label :password_confirmation, class: "label has-text-lavanda is-size-1" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input has-text-lavanda  has-text-centered has-border-colored is-size-3" %>
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+    <%= f.label :current_password, class: "label has-text-lavanda is-size-1" %> <i class = "has-text-lavanda is-size-1">(we need your current password to confirm your changes)</i><br />
+    <%= f.password_field :current_password, autocomplete: "current-password", class: "input  has-text-centered has-border-colored is-size-3" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+ <div class= 'column has-text-centered'><%= f.submit "Update", class: 'button has-background-turquoise has-text-charcoal has-text is-size-2'%></div>
   </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+      </div>
+        
+    </div>
+      <% end %>
+  </div>
+<div class =" columns is-centered is-multiline">
+    <div class= "column has-text-centered"> <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "button has-text is-size-3 is-fullwidth is-danger" %></div>
+  
+  <div class="column has-text-centered"><div class = "button is-fullwidth has-background-charcoal has-text is-size-3 "> <%= link_to "Back", :back, class: "has-text-lavanda has-text-centered " %></div></div>
+</div>
