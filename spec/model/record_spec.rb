@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Record, type: :model do
-    let(:user1) { User.create(name: 'Oscar', email: 'a@mail.com', password: '123456') }
+  let(:user1) { User.create(name: 'Oscar', email: 'a@mail.com', password: '123456') }
   subject { Record.new(name: 'new record', amount: 10, author: user1) }
   it 'is valid with valid attributes' do
     expect(subject).to be_valid
@@ -26,5 +28,4 @@ RSpec.describe Record, type: :model do
     t = User.reflect_on_association(:groups)
     expect(t.macro).to eq(:has_many)
   end
- 
 end

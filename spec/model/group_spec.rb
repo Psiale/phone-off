@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Group, type: :model do
-    let(:file) {  fixture_file_upload(Rails.root.join('app/assets/images/', 'unnamed.png'), 'image/png') }
-    let(:user1) { User.create(name: 'Oscar', email: 'a@mail.com', password: '123456') }
+  let(:file) {  fixture_file_upload(Rails.root.join('app/assets/images/', 'unnamed.png'), 'image/png') }
+  let(:user1) { User.create(name: 'Oscar', email: 'a@mail.com', password: '123456') }
   subject { Group.create(name: 'new record', user: user1, icon: file) }
   it 'is valid with valid attributes' do
     expect(subject).to be_valid
@@ -16,7 +18,6 @@ RSpec.describe Group, type: :model do
     subject.user = nil
     expect(subject).to_not be_valid
   end
-
 
   it 'is not valid without a user associated to it' do
     subject.user = nil
@@ -33,5 +34,4 @@ RSpec.describe Group, type: :model do
   it 'should have an icon' do
     t = Group.reflect_on_association(:icon)
   end
- 
 end

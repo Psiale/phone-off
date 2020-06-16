@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
@@ -26,5 +28,4 @@ RSpec.describe User, type: :model do
     t = User.reflect_on_association(:groups)
     expect(t.macro).to eq(:has_many)
   end
- 
 end

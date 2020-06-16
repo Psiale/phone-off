@@ -1,5 +1,6 @@
+# frozen_string_literal: true
+
 class GroupsController < ApplicationController
-  
   before_action :authenticate_user!
 
   # GET /groups
@@ -21,15 +22,12 @@ class GroupsController < ApplicationController
   end
 
   # GET /groups/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /groups
   # POST /groups.json
   def create
-    
     @group = current_user.groups.build(group_params)
-    
 
     respond_to do |format|
       if @group.save
@@ -67,13 +65,14 @@ class GroupsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_group
-      @group = Group.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def group_params
-      params.require(:group).permit(:name, :icon)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_group
+    @group = Group.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def group_params
+    params.require(:group).permit(:name, :icon)
+  end
 end
