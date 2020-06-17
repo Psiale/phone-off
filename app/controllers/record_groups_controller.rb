@@ -5,7 +5,7 @@ class RecordGroupsController < ApplicationController
   # GET /record_groups
   # GET /record_groups.json
   def index
-    @record_groups = RecordGroup.all
+    @record_groups = RecordGroup.all.includes(:record_groups)
   end
 
   # GET /record_groups/1
