@@ -1,4 +1,3 @@
-# frozen_string_literal: true
-
+# Groups helper module
 module GroupsHelper
 end

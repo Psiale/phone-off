@@ -1,5 +1,4 @@
-# frozen_string_literal: true
-
+# Record model
 class Record < ApplicationRecord
   include CloudinaryHelper
   belongs_to :author, class_name: 'User'

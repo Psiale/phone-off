@@ -2,6 +2,7 @@
 
 # This migration comes from active_storage (originally 20170806125915)
 class CreateActiveStorageTables < ActiveRecord::Migration[5.2]
+  # rubocop:disable Metrics/AbcSize
   def change
     create_table :active_storage_blobs do |t|
       t.string   :key,        null: false
@@ -14,6 +15,7 @@ class CreateActiveStorageTables < ActiveRecord::Migration[5.2]
 
       t.index [:key], unique: true
     end
+    # rubocop:enable Metrics/AbcSize
 
     create_table :active_storage_attachments do |t|
       t.string     :name,     null: false

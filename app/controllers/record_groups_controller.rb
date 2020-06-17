@@ -1,12 +1,11 @@
-# frozen_string_literal: true
-
+# RecordGroups controller
 class RecordGroupsController < ApplicationController
   before_action :set_record_group, only: %i[show edit update destroy]
 
   # GET /record_groups
   # GET /record_groups.json
   def index
-    @record_groups = RecordGroup.all
+    @record_groups = RecordGroup.all.includes(:record_groups)
   end
 
   # GET /record_groups/1

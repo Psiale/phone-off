@@ -1,9 +1,7 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 RSpec.describe Group, type: :model do
-  let(:file) {  fixture_file_upload(Rails.root.join('app/assets/images/', 'unnamed.png'), 'image/png') }
+  let(:file) { fixture_file_upload(Rails.root.join('app/assets/images/', 'unnamed.png'), 'image/png') }
   let(:user1) { User.create(name: 'Oscar', email: 'a@mail.com', password: '123456') }
   subject { Group.create(name: 'new record', user: user1, icon: file) }
   it 'is valid with valid attributes' do
@@ -24,7 +22,7 @@ RSpec.describe Group, type: :model do
     expect(subject).to_not be_valid
   end
   it 'should belongs to user' do
-    t = Group.reflect_on_association(:User)
+    Group.reflect_on_association(:User)
   end
   it 'should have many records' do
     t = Group.reflect_on_association(:records)
@@ -32,6 +30,6 @@ RSpec.describe Group, type: :model do
   end
 
   it 'should have an icon' do
-    t = Group.reflect_on_association(:icon)
+    Group.reflect_on_association(:icon)
   end
 end

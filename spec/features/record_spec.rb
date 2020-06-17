@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 RSpec.describe 'Creating records on Index page', type: :feature do
@@ -34,7 +32,9 @@ RSpec.describe 'Creating records on Index page', type: :feature do
     expect(page).to have_css('.user-photo')
   end
 
-  scenario 'Creates new record with group successfully, then go back to the index page to find the new created content' do
+  scenario 'Creates new record with group successfully,
+  then go back to the index page to find
+   the new created content' do
     fill_in 'Name your record, please', with: 'My record.'
     fill_in 'time', with: '10'
     check 'record[group_id][]'

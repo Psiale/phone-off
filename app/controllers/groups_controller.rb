@@ -1,5 +1,4 @@
-# frozen_string_literal: true
-
+# Groups controller
 class GroupsController < ApplicationController
   before_action :authenticate_user!
 
