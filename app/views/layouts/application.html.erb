@@ -26,19 +26,19 @@
     <div class = "categories-container">
       <div class="dr-categories">
         <% if user_signed_in? %>
-          <div class ="header-item is-size-2"><%= link_to 'Edit profile', edit_user_registration_path  %></div>
-          <div class ="header-item is-size-2"><%= link_to "Logout", destroy_user_session_path, method: :delete  %></div>
+          <div class ="header-item is-size-2"><%= link_to 'Edit profile', edit_user_registration_path, class: "drawer-link"  %></div>
+          <div class ="header-item is-size-2"><%= link_to "Logout", destroy_user_session_path, method: :delete, class: "drawer-link"  %></div>
         <% else %>
-          <div class = "header-item is-size-2"><%= link_to "Sign up", new_user_registration_path %></div>
-          <div class = "header-item is-size-2"><%= link_to "Login", new_user_session_path  %></div>
+          <div class = "header-item is-size-2"><%= link_to "Sign up", new_user_registration_path, class: "drawer-link" %></div>
+          <div class = "header-item is-size-2"><%= link_to "Login", new_user_session_path, class: "drawer-link"  %></div>
     
         <% end %>
       </div>
       <% if user_signed_in? %>
         <div class="dr-categories">
-          <div class = "header-item is-size-2"><%= link_to 'All my records', records_path %></div>
-          <div class = "header-item is-size-2"><%= link_to 'All my external records', index_no_group_path%></div>
-          <div class = "header-item is-size-2"><%= link_to 'All created groups', groups_path %></div>
+          <div class = "header-item is-size-2"><%= link_to 'All my records', records_path, class: "drawer-link" %></div>
+          <div class = "header-item is-size-2"><%= link_to 'All my external records', index_no_group_path, class: "drawer-link"%></div>
+          <div class = "header-item is-size-2"><%= link_to 'All created groups', groups_path, class: "drawer-link" %></div>
       </div>
       <% end %>
     </div>
