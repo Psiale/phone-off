@@ -21,12 +21,12 @@
             </div>
           <% end %>
       </div>
-    <div class="button-new">
-    <%= link_to "+", new_record_path, class: "btn-new" %>
-    </div>
     <% end %>
   <% else %>
   <p>You don't have any record yet</p>
   <% end %>
+      <div class="button-new">
+    <%= link_to "+", new_record_path, class: "btn-new" %>
+    </div>
 </div>
 
