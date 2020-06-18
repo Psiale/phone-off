@@ -17,33 +17,34 @@ RSpec.describe 'Creating Groups on group page', type: :feature do
     expect(page).to have_content("You don't have any group yet")
   end
   scenario 'Creates new group successfully' do
-    click_on 'Create a new one'
+    click_on '+'
     fill_in 'Name your group, please', with: 'Unnamed'
     attach_file(File.absolute_path('app/assets/images/unnamed.png'))
     click_on 'Submit'
     expect(page).to have_content('Group was successfully created.')
   end
   scenario 'View the new created group' do
-    click_on 'Create a new one'
+    click_on '+'
     fill_in 'Name your group, please', with: 'Unnamed'
     attach_file(File.absolute_path('app/assets/images/unnamed.png'))
     click_on 'Submit'
     click_on 'Back'
-    expect(page).to have_content('View')
+    expect(page).to have_content('Unnamed')
   end
 
   scenario 'See the record name associated to the new created group' do
-    click_on 'Create a new one'
+    click_on '+'
     fill_in 'Name your group, please', with: 'Unnamed'
     attach_file(File.absolute_path('app/assets/images/unnamed.png'))
     click_on 'Submit'
     visit records_path
+    click_on '+'
     fill_in 'Name your record, please', with: 'My record.'
     fill_in 'time', with: '10'
     check 'record[group_id][]'
     click_on 'submit'
     visit groups_path
-    click_on 'View'
-    expect(page).to have_content('Record name')
+    click_link('Unnamed')
+    expect(page).to have_content('My record')
   end
 end

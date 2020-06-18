@@ -1,4 +1,6 @@
-<div class = "column has-text-centered"><h2>Edit <%= resource_name.to_s.humanize %></h2></div>
+<div class="container-title" >
+  <h3 id = "has-text-ocean"> Edit user</h3>
+</div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -36,7 +38,7 @@
   </div>
 
   <div class="actions">
- <div class= 'column has-text-centered'><%= f.submit "Update", class: 'button has-background-turquoise has-text-charcoal has-text is-size-2'%></div>
+ <div class= 'column has-text-centered'><%= f.submit "Update", class: 'button has-background-turquoise has-text-white has-text is-size-2'%></div>
   </div>
       </div>
         
@@ -44,7 +46,7 @@
       <% end %>
   </div>
 <div class =" columns is-centered is-multiline">
-    <div class= "column has-text-centered"> <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "button has-text is-size-3 is-fullwidth is-danger" %></div>
+    <div class= "column has-text-centered"> <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "button has-text is-size-3 is-fullwidth has-background-grass" %></div>
   
   <div class="column has-text-centered"><div class = "button is-fullwidth has-background-charcoal has-text is-size-3 "> <%= link_to "Back", :back, class: "has-text-lavanda has-text-centered " %></div></div>
 </div>

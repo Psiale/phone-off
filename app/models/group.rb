@@ -7,4 +7,5 @@ class Group < ApplicationRecord
   validates :icon, presence: true
   has_many :records, through: :record_groups, dependent: :destroy
   scope :most_recent, -> { order(created_at: :desc) }
+  scope :alph, -> { order(name: :asc) }
 end

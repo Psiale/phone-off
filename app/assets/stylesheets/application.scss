@@ -24,7 +24,7 @@ $russian-green: #73956f;
 $lavender-blush: #fceff9;
 
 @mixin charcoal-form {
-  background-color: $charcoal;
+  background-color: white;
   opacity: 0.8;
 }
 
@@ -58,7 +58,7 @@ h2 {
 
 body,
 html {
-  background-color: #fceff9;
+  background-color: rgb(236, 233, 233);
   width: 100%;
   height: 100%;
   overflow-x: hidden;
@@ -80,6 +80,18 @@ html {
 
 .drawer-link {
   color: $font;
+}
+
+.container-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  h3 {
+    color: $ocean;
+    font-size: 80px;
+  }
 }
 
 .icon-close {
@@ -130,7 +142,6 @@ html {
   align-items: center;
   color: #454851;
   background-color: rgb(236, 233, 233);
-
 }
 
 .item-total-record {
@@ -170,7 +181,6 @@ html {
   justify-content: center;
   max-height: 100%;
   height: 100%;
-  border-top: $russian-green 1px solid;
   padding-top: 30px;
 
   img {
@@ -196,9 +206,64 @@ html {
 
 .group-info-container {
   display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 2fr 1fr 15%;
+  grid-template-areas:
+    "group-image title"
+    "number-created-at number-created-at"
+    "item-author item-author";
+  border-bottom: $font 3px solid;
+}
+
+.groups-record-container {
+  display: grid;
   grid-template-columns: 49% 49%;
-  grid-template-areas: "item-record-name item-created-at";
-  column-gap: 20px;
+  grid-template-rows: 49% 49%;
+  grid-template-areas:
+    "g-record-name g-record-name"
+    "g-record-number-created-at g-record-number-created-at";
+}
+.box-color{
+  background-color: rgb(236, 233, 233);
+}
+.g-record-name {
+  grid-area: g-record-name;
+}
+
+.g-record-number-created-at {
+  grid-area: g-record-number-created-at;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.title {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-area: title;
+}
+
+.group-image {
+  grid-area: group-image;
+    img {
+      width: 100%;
+      height: 100%;
+  }
+}
+
+.number-created-at {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  grid-area: number-created-at;
+}
+
+.item-author {
+  grid-area: item-author;
 }
 
 .item-record-name {
@@ -254,7 +319,7 @@ html {
   justify-content: center;
   align-items: center;
   background-color: $ocean;
-  width: 400px;
+  width: 100%;
   height: 50px;
   border-radius: 15px;
   box-shadow: 2px 2px;
@@ -262,7 +327,6 @@ html {
 }
 
 .item-form-new-record {
-  border-top: 11px dotted #73956f;
   width: 100%;
   text-align: center;
   margin-top: 35px;
@@ -296,7 +360,6 @@ html {
 .image {
   margin: 60px;
   grid-area: image;
-  border: $charcoal dashed 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -308,7 +371,6 @@ html {
   min-width: 200px;
   min-height: 200px;
   height: 70%;
-  border: #7bae7f 10px dashed;
 }
 
 .record-name {
@@ -321,21 +383,21 @@ html {
 .record-name-button {
   width: 80%;
   height: 70%;
-  background-color: #7bae7f;
   box-shadow: 10px 10px;
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 25px;
+  font-size: 50px;
+  background-color: $ocean;
 }
 
 .buttons {
   grid-area: buttons;
   display: grid;
-  grid-template-columns: 33% 33% 33%;
-  grid-template-areas: "edit destroy back";
-  column-gap: 5px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "edit back";
+  column-gap: 50px;
   font-size: 70px;
 
   a {
@@ -349,7 +411,7 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #454851;
+  background-color: $grass;
 }
 
 .destroy {
@@ -367,7 +429,7 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #454851;
+  background-color: $grass;
 }
 
 // Form
@@ -380,11 +442,26 @@ html {
   @include charcoal-form();
 
   .has-text-lavanda {
-    color: $lavender-blush;
+    color: $font;
   }
 
   .has-text-charcoal {
     color: $charcoal;
+  }
+
+  #has-text-ocean {
+    h3 {
+      font-size: 50px;
+      color: $ocean;
+    }
+  }
+
+  .has-background-ocean {
+    background-color: $ocean;
+  }
+
+  .has-background-grass {
+    background-color: $grass;
   }
 
   input[type=radio],
