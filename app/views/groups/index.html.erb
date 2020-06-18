@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<div class="column has-text-centered">
-  <h2>Groups</h2>
+<div class="container-title" >
+  <h3 id = "has-text-ocean"> Groups</h3>
 </div>
 
 
@@ -9,29 +9,24 @@
   <% if @groups.count.positive? %>
         <% @groups.each do |group| %>
       <div class="item-record-history">
-        <div class = "item-image"><%= image_tag(group.icon) %></div>
-          <div class= "group-info-container">
-            <div class="has-text-centered is-size-3 item-record-name"><p>Group name</p> <%= group.name %> </div>
-            <div class= " has-text-centered item-created-at is-size-3 "><p>Created at </p> <%= group.created_at.strftime("%A %d %B") %> </div>
-          </div> 
-          <div class="item-button-container">
-            <div class=item-button-view>
-              <%= link_to "View", group_path(group), class: "has-text is-size-2" %> 
+          <%= link_to group_path(group) do %>
+            <div class= "record-info-container box">
+              <div class = "item-image"><%= image_tag(group.icon) %></div>
+              <div class= " has-text is-size-3 item-time-spent"> <%= group.user.name %> </div>
+              <div class="has-text-centered is-size-3 item-record-name"><%= group.name %> </div>
+              <div class= " has-text-centered item-created-at is-size-3 "><%= group.created_at.strftime("%A %d %B") %> </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
-      </div>
-      <div class=item-form-new-record>
-        <h1> New Group</h1>
-        <%= render 'form', group: @group %>
       </div>
   <% else %>
     <div class = "column has-text-centered">
       <p class=" label is-size-3 has-text-lavanda">You don't have any group yet </p>
-        <%= link_to 'Create a new one', new_group_path, class: "button has-background-turquoise has-text-charcoal is-size-4" %>
     </div>
   <% end %>
-  
+        <div class="button-new">
+    <%= link_to "+", new_group_path, class: "btn-new" %>
+    </div>
     </div>
 <br>
 

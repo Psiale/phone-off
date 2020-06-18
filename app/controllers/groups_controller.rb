@@ -1,12 +1,11 @@
-# frozen_string_literal: true
-
+# Groups controller
 class GroupsController < ApplicationController
   before_action :authenticate_user!
 
   # GET /groups
   # GET /groups.json
   def index
-    @groups = current_user.groups.most_recent.all
+    @groups = current_user.groups.alph.all
     @group = current_user.groups.build
   end
 

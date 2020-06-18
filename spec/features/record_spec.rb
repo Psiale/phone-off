@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 RSpec.describe 'Creating records on Index page', type: :feature do
@@ -16,9 +14,10 @@ RSpec.describe 'Creating records on Index page', type: :feature do
     visit index_no_group_path
   end
   scenario 'The user is on the  index_no_group page' do
-    expect(page).to have_content('New Record without group')
+    expect(page).to have_content('Records')
   end
   scenario 'Creates new record successfully' do
+    click_on '+'
     fill_in 'Name your record, please', with: 'My record without group.'
     fill_in 'time', with: '10'
     # find(:css, "#record_group_id_[value='3']").set(true)
@@ -27,6 +26,7 @@ RSpec.describe 'Creating records on Index page', type: :feature do
   end
 
   scenario 'Creates new record with group successfully and goes to the record show page' do
+    click_on '+'
     fill_in 'Name your record, please', with: 'My record.'
     fill_in 'time', with: '10'
     check 'record[group_id][]'
@@ -34,7 +34,10 @@ RSpec.describe 'Creating records on Index page', type: :feature do
     expect(page).to have_css('.user-photo')
   end
 
-  scenario 'Creates new record with group successfully, then go back to the index page to find the new created content' do
+  scenario 'Creates new record with group successfully,
+  then go back to the index page to find
+the new created content' do
+    click_on '+'
     fill_in 'Name your record, please', with: 'My record.'
     fill_in 'time', with: '10'
     check 'record[group_id][]'
@@ -57,9 +60,10 @@ RSpec.describe 'Creating records on Index page', type: :feature do
     click_on 'Log in'
   end
   scenario 'The user is on the records page' do
-    expect(page).to have_content('New Record')
+    expect(page).to have_content('Records')
   end
   scenario 'Creates new record without group successfully' do
+    click_on '+'
     fill_in 'Name your record, please', with: 'My record.'
     fill_in 'time', with: '10'
     # find(:css, "#record_group_id_[value='3']").set(true)
