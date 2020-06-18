@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+<div class="show-page-container">
+        <div class="image">
+        
+        <% @record.groups.each do |group| %>
+            <% if group.icon %>
+                <div class="user-photo"> <%= image_tag(group.icon) %></div>
+            <% else %>
+                <div class="user-photo"> <%= image_tag('unnamed.png') %></div>
+            <% end %>
+
+        <% end %>
+        </div>
+        <div class="record-name">
+            <div class="record-name-button"> <br><p class = "has-text-white"><%= @record.name %></p></div>
+        </div>
+        <div class="buttons">
+            <div class="edit">
+                <%= link_to 'No group',index_no_group_path %>
+            </div>
+            <div class="back">
+                <%= link_to 'With group', records_path %>
+            </div>
+        </div>
+    
+        </div>

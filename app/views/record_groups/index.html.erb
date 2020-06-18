@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Record Groups</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @record_groups.each do |record_group| %>
+      <tr>
+        <td><%= link_to 'Show', record_group %></td>
+        <td><%= link_to 'Edit', edit_record_group_path(record_group) %></td>
+        <td><%= link_to 'Destroy', record_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Record Group', new_record_group_path %>

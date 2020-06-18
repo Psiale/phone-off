@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container-title" >
+  <h3 id = "has-text-ocean"> Groups</h3>
+</div>
+
+
+  <div class = "total-records-container">
+  <% if @groups.count.positive? %>
+        <% @groups.each do |group| %>
+      <div class="item-record-history">
+          <%= link_to group_path(group) do %>
+            <div class= "record-info-container box">
+              <div class = "item-image"><%= image_tag(group.icon) %></div>
+              <div class= " has-text is-size-3 item-time-spent"> <%= group.user.name %> </div>
+              <div class="has-text-centered is-size-3 item-record-name"><%= group.name %> </div>
+              <div class= " has-text-centered item-created-at is-size-3 "><%= group.created_at.strftime("%A %d %B") %> </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+  <% else %>
+    <div class = "column has-text-centered">
+      <p class=" label is-size-3 has-text-lavanda">You don't have any group yet </p>
+    </div>
+  <% end %>
+        <div class="button-new">
+    <%= link_to "+", new_group_path, class: "btn-new" %>
+    </div>
+    </div>
+<br>
+

@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+  <div class="total-container">
+    <div class= "item-total-record">
+      <h1>Records</h1>
+      <h2> <%= @amount_with_group %>  minutes</h2>
+    </div>  
+  </div>
+<div class="total-records-container">
+  <% if @records_with_group %>
+      <% @records_with_group.each do |record| %>
+      <div class= item-records-history>
+        <%= link_to record_path(record) do %>
+          <div class = "record-info-container box">
+          <% record.groups.each do |group| %>
+          <div class= item-image> <%= image_tag(group.icon) %></div>         
+          <% end %>
+              <div class= item-record-name> <%= record.name %> </div>
+              <div class= item-time-spent> <%= record.amount %>  minutes</div>
+              <div class= item-created-at><%= record.created_at.strftime("%A %d %B") %> </div>
+            </div>
+          <% end %>
+      </div>
+    <% end %>
+  <% else %>
+  <p>You don't have any record yet</p>
+  <% end %>
+      <div class="button-new">
+    <%= link_to "+", new_record_path, class: "btn-new" %>
+    </div>
+</div>
+

@@ -1,0 +1,93 @@
+<%= form_with(model: record, local: true) do |form| %>
+  <% if record.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(record.errors.count, "error") %> prohibited this record from being saved:</h2>
+
+        <ul>
+          <% record.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+
+  <div class = "columns is-centered ">
+    
+    <div class = "column is-four-fifths ">
+  
+      <div class ="box has-background-charcoal">
+            <div class = "field">
+          <%= form.label "What's the name of your record?", class: "label has-text-lavanda is-size-1" %>
+          <div class = "control ">
+          <%= form.text_field :name, class: "input  has-text-centered has-border-colored is-size-3", placeholder: "Name your record, please", disable: false %>
+        </div>
+            
+            
+
+            <%# <%= collection_select(:record, :group_id, Group.all, :id, prompt: true) %> 
+        <div class = "field">
+          <%= form.label 'How many time did you use your cellphone?', class: "label has-text-lavanda is-size-1" %>
+          <div class = "control ">
+          <%= form.number_field :amount, in: 0..60,step: 1, class: "input  has-text-centered has-text-charcoal is-size-3", placeholder: "time" %>
+          <span class = "has-text is-size-2 has-text-lavanda">
+            <span class = "is-size-2"><%= radio_button_tag(:time, "minutes", true) %></span>
+            <%= label_tag(:minutes, "minutes") %>
+          </span>
+
+          <span class = "has-text is-size-2 has-text-lavanda">
+            <%= radio_button_tag(:time, "hours") %>
+            <%= label_tag(:hours, "hours") %>
+          </span>
+        </div>
+
+        <br>
+
+        <p class="label is-size-2 has-text-lavanda">Choose a group</p>
+
+
+        <div class="field">
+          <div class="control">
+              <% if current_user.groups.count.positive? %>
+                <% current_user.groups.each do |group| %>
+                  <div> <%= check_box_tag "record[group_id][]", group.id %> <span class = "has-text is-size-2 has-text-lavanda"><%= group.name %></span></div>
+                <% end %>
+                <% else %>
+                  <div class = "column has-text-centered">
+                    <p class=" label is-size-3 has-text-lavanda">You don't have any group yet </p>
+                     <%= link_to 'Create a new one', new_group_path, class: "button has-background-turquoise has-text-charcoal is-size-4" %>
+                  </div>
+                
+              <% end %>
+              
+                
+              
+            
+          </div>
+
+
+        <br>
+
+        <div class="field ">
+          <div class="control">
+            <%= form.submit 'submit', class: 'button is-fullwidth has-text is-size-3' %>
+
+
+      </div>
+        
+    </div>
+      
+  </div>
+        
+    
+<% end %>
+
+  </div>
+</div> 
+
+
+
+
+
+
+

@@ -1,0 +1,17 @@
+<%= form_with(model: record_group, local: true) do |form| %>
+  <% if record_group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(record_group.errors.count, "error") %> prohibited this record_group from being saved:</h2>
+
+      <ul>
+        <% record_group.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

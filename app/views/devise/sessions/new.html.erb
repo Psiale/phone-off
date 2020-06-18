@@ -1,0 +1,32 @@
+<div class="container-title" >
+  <h3 id = "has-text-ocean"> Log in</h3>
+</div>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class = "columns is-centered ">
+    
+    <div class = "column is-four-fifths ">
+  
+      <div class ="box has-background-charcoal">
+
+  <div class="field">
+    <%= f.label :email, class: "label has-text-lavanda is-size-1" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input  has-text-centered has-border-colored is-size-3" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password, class: "label has-text-lavanda is-size-1" %><br />
+    <%= f.password_field :password, autocomplete: "current-password", class: "input  has-text-centered has-text-charcoal is-size-3" %>
+  </div>
+
+  <div class="actions">
+<div class= 'column has-text-centered'><%= f.submit "Log in", class: 'button has-background-turquoise has-text-white has-text is-size-2 ' %></div>
+  </div>
+   </div>
+        
+    </div>
+      <% end %>
+  </div>
+<br><br>
+
+<div class = "button has-background-charcoal is-size-2 "> <%= link_to 'Sign up', new_user_registration_path, class: "has-text-lavanda has-text-centered is-size-2" %></div>

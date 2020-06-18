@@ -1,0 +1,476 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import 'bulma';
+
+$charcoal: #454851;
+$ocean: #3778c2;
+$font: #434b54;
+$grass: #5fb523;
+$darksea-green: #7bae7f;
+$russian-green: #73956f;
+$lavender-blush: #fceff9;
+
+@mixin charcoal-form {
+  background-color: white;
+  opacity: 0.8;
+}
+
+h1 {
+  font-size: 100px;
+}
+
+h2 {
+  font-size: 70px;
+}
+
+a {
+  padding-bottom: 10px;
+}
+
+a,
+h1,
+h2 {
+  color: white;
+}
+
+.header {
+  background-color: $ocean;
+}
+
+.icons {
+  color: white;
+  width: 60px;
+  height: 60px;
+}
+
+body,
+html {
+  background-color: rgb(236, 233, 233);
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+#drawer {
+  background-color: $ocean;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  width: 0;
+  height: 100%;
+  display: none;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.drawer-link {
+  color: $font;
+}
+
+.container-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  h3 {
+    color: $ocean;
+    font-size: 80px;
+  }
+}
+
+.icon-close {
+  width: 60px;
+  height: 60px;
+}
+
+.categories-container {
+  width: 70%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+.dr-categories {
+  margin-top: 10px;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-item {
+  box-shadow: 10px 10px;
+  border-radius: 25px;
+  display: flex;
+  margin-bottom: 75px;
+  justify-content: center;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #fceff9;
+}
+
+#container {
+  height: 100%;
+  width: 100%;
+  transition: margin-right 0.5s;
+  background-color: rgb(236, 233, 233);
+}
+
+/* si vas a borrar algo sera a partir de aqui, que empecé a hacer mis desmadres */
+
+.total-records-container {
+  font-family: 'Roboto', sans-serif;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #454851;
+  background-color: rgb(236, 233, 233);
+}
+
+.item-total-record {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  height: 91%;
+  box-shadow: 20px 20px;
+  background-color: $ocean;
+  border-radius: 10px;
+}
+
+.total-container {
+  align-items: center;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.item-records-history {
+  margin-top: 20px;
+  width: 95%;
+  display: grid;
+  text-align: center;
+  font-size: 38px;
+}
+
+.item-image {
+  grid-area: item-image;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  max-height: 100%;
+  height: 100%;
+  padding-top: 30px;
+
+  img {
+    width: 80%;
+    height: 80%;
+  }
+}
+
+.item-records {
+  display: grid;
+  grid-area: item-records;
+}
+
+.record-info-container {
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-template-rows: 50% 50%;
+  grid-template-areas:
+    "item-image item-record-name item-time-spent"
+    "item-image item-created-at item-time-spent";
+  color: $font;
+}
+
+.group-info-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 2fr 1fr 15%;
+  grid-template-areas:
+    "group-image title"
+    "number-created-at number-created-at"
+    "item-author item-author";
+  border-bottom: $font 3px solid;
+}
+
+.groups-record-container {
+  display: grid;
+  grid-template-columns: 49% 49%;
+  grid-template-rows: 49% 49%;
+  grid-template-areas:
+    "g-record-name g-record-name"
+    "g-record-number-created-at g-record-number-created-at";
+}
+
+.box-color {
+  background-color: rgb(236, 233, 233);
+}
+
+.g-record-name {
+  grid-area: g-record-name;
+}
+
+.g-record-number-created-at {
+  grid-area: g-record-number-created-at;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.title {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-area: title;
+}
+
+.group-image {
+  grid-area: group-image;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.number-created-at {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  grid-area: number-created-at;
+}
+
+.item-author {
+  grid-area: item-author;
+}
+
+.item-record-name {
+  grid-area: item-record-name;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bolder;
+}
+
+.item-time-spent {
+  grid-area: item-time-spent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item-created-at {
+  grid-area: item-created-at;
+  font-size: 30px;
+}
+
+.item-button-container {
+  display: flex;
+  grid-area: item-button;
+  width: 100%;
+  justify-content: center;
+}
+
+//aqui hay dos botones, el bueno es el que llamare .button-new
+
+.button-new {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  right: 40px;
+  bottom: 60px;
+  background-color: $grass;
+  border-radius: 50%;
+  color: white;
+  font-size: 100px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item-button-view {
+  margin: 25px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: $ocean;
+  width: 100%;
+  height: 50px;
+  border-radius: 15px;
+  box-shadow: 2px 2px;
+  font-size: 20px;
+}
+
+.item-form-new-record {
+  width: 100%;
+  text-align: center;
+  margin-top: 35px;
+  font-size: 20px;
+}
+
+// Records show page
+
+.show-page-container {
+  font-family: 'Roboto', sans-serif;
+  width: 100%;
+  height: 100%;
+  color: #454851;
+  display: grid;
+  grid-template-rows: 50% 15% 10%;
+  grid-template-areas:
+    "image"
+    "record-name"
+    "buttons";
+  row-gap: 10px;
+}
+
+.image-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.image {
+  margin: 60px;
+  grid-area: image;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-photo {
+  width: 70%;
+  display: flex;
+  min-width: 200px;
+  min-height: 200px;
+  height: 70%;
+}
+
+.record-name {
+  grid-area: record-name;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.record-name-button {
+  width: 80%;
+  height: 70%;
+  box-shadow: 10px 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  background-color: $ocean;
+}
+
+.buttons {
+  grid-area: buttons;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "edit back";
+  column-gap: 50px;
+  font-size: 70px;
+
+  a {
+    color: #fceff9;
+  }
+}
+
+.edit {
+  grid-area: edit;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $grass;
+}
+
+.destroy {
+  grid-area: destroy;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #454851;
+}
+
+.back {
+  grid-area: back;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $grass;
+}
+
+// Form
+
+.has-background-turquoise {
+  background-color: $ocean;
+}
+
+.has-background-charcoal {
+  @include charcoal-form();
+
+  .has-text-lavanda {
+    color: $font;
+  }
+
+  .has-text-charcoal {
+    color: $charcoal;
+  }
+
+  #has-text-ocean {
+    h3 {
+      font-size: 50px;
+      color: $ocean;
+    }
+  }
+
+  .has-background-ocean {
+    background-color: $ocean;
+  }
+
+  .has-background-grass {
+    background-color: $grass;
+  }
+
+  input[type=radio],
+  input[type=checkbox] {
+    transform: scale(2.5);
+    margin: 0 8px;
+  }
+}

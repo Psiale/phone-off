@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+<div class="total-records-container">
+    <div class = "item-records-history">
+        <div class="group-info-container">
+            <div class= group-image> <%= image_tag(@group.icon) %></div>
+            <div class="has-text is-size-2 title "><p class = "has-text is-size-1  ">Group name </p> <%= @group.name %> </div>
+            <div class="has-text is-size-2 number-created-at">
+                <div class= "has-text is-size-2 item-number"><p> Group number:</p><%= @group.id %> </div>
+                <div class="has-text is-size-2 item-created-at">Created at: <%= @group.created_at.strftime("%A %d %B") %></div>
+            </div>
+            <div class="item-author">Created by <%= @group.user.name %></div>
+        </div>
+        <div class="container-title" >
+            <h3 id = "has-text-ocean"> Records using this group</h3>
+        </div>
+       <% @group.records.each do |record| %>
+            <div class="groups-record-container box box-color">
+                <div class="has-text is-size-3 g-record-name"><%= record.name %></div>
+                <div class="g-record-number-created-at">
+                <div class="has-text is-size-3 g-record-number"><%= record.id %></div>
+                <div class="has-text is-size-3 g-record-created-at"><%= record.created_at.strftime("%A %d %B") %></div>
+                </div>
+            </div>
+        <% end %>
+        <div class = "columns is-half has-text-centered">
+            <div class=item-button-view>
+                <%= link_to 'Back', groups_path, class: "has-text is-size-2" %>
+            </div>
+        </div>
+    </div> 
+</div>
+
+

@@ -1,0 +1,56 @@
+<%= form_with(model: group, local: true) do |form| %>
+  <% if group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
+  
+      <ul>
+        <% group.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+    <div class = "columns is-centered ">
+    
+    <div class = "column is-four-fifths ">
+  
+      <div class ="box has-background-charcoal">
+            <div class = "field">
+          <%= form.label "What's the name of your record?", class: "label has-text-lavanda is-size-1" %>
+          <div class = "control ">
+          <%= form.text_field :name, class: "input  has-text-centered has-border-colored is-size-3", placeholder: "Name your group, please" %>
+        </div>
+            
+            <%# <%= collection_select(:record, :group_id, Group.all, :id, prompt: true) %> 
+        <div class = "field">
+          <%= form.label 'Choose an image for your group', class: "label has-text-lavanda is-size-1" %>
+          <div class = "control ">
+          <%= form.file_field :icon, class: "input  has-text-centered has-text-charcoal is-size-3", placeholder: "icon for your group" %>
+
+        </div>
+
+        <br>
+
+        
+          </div>
+
+
+        <br>
+
+        <div class="field ">
+          <div class="control">
+            <%= form.submit 'Submit', class: 'button is-fullwidth has-text is-size-2' %>
+
+
+      </div>
+        
+    </div>
+      
+  </div>
+
+
+
+    
+<% end %>
