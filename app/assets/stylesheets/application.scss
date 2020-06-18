@@ -199,8 +199,9 @@ html {
   display: grid;
   grid-template-columns: 33% 33% 33%;
   grid-template-rows: 50% 50%;
-  grid-template-areas: "item-image item-record-name item-time-spent"
-                       "item-image item-created-at item-time-spent";
+  grid-template-areas:
+    "item-image item-record-name item-time-spent"
+    "item-image item-created-at item-time-spent";
   color: $font;
 }
 
@@ -223,9 +224,11 @@ html {
     "g-record-name g-record-name"
     "g-record-number-created-at g-record-number-created-at";
 }
-.box-color{
+
+.box-color {
   background-color: rgb(236, 233, 233);
 }
+
 .g-record-name {
   grid-area: g-record-name;
 }
@@ -248,9 +251,10 @@ html {
 
 .group-image {
   grid-area: group-image;
-    img {
-      width: 100%;
-      height: 100%;
+
+  img {
+    width: 100%;
+    height: 100%;
   }
 }
 

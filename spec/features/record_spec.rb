@@ -37,7 +37,7 @@ RSpec.describe 'Creating records on Index page', type: :feature do
   scenario 'Creates new record with group successfully,
   then go back to the index page to find
 the new created content' do
-   click_on '+'
+    click_on '+'
     fill_in 'Name your record, please', with: 'My record.'
     fill_in 'time', with: '10'
     check 'record[group_id][]'
