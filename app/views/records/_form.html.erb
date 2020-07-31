@@ -1,11 +1,11 @@
 <%= form_with(model: record, local: true) do |form| %>
   <% if record.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(record.errors.count, "error") %> prohibited this record from being saved:</h2>
+        <h2 class ="has-text-black" ><%= pluralize(record.errors.count, "error") %> prohibited this record from being saved:</h2>
 
         <ul>
           <% record.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
+            <li class ="has-text-danger has-text-centered is-size-3"><%= message %></li>
           <% end %>
         </ul>
       </div>
